@@ -1,6 +1,6 @@
 from django.urls import path
 from django.urls import include
-from rango import views
+from . import views
 
 app_name = 'rango'
 
@@ -11,5 +11,9 @@ urlpatterns = [
         views.show_category, name ='show_category'),
     path('add_category/', views.add_category, name = 'add_category'),
     path('category/<slug:category_name_slug>/add_page/',
-        views.add_page, name = 'add_page')
+        views.add_page, name = 'add_page'),
+    path('register/', views.register, name = 'register'),
+    path('login/', views.uesr_login, name = 'login'),
+    path('restricted/', views.resricted, name = 'restricted'),
+    path('logout/', views.user_logout, name = 'logout'),
 ]

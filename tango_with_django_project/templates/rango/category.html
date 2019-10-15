@@ -2,7 +2,11 @@
 {% load staticfiles %}
 
 {% block title_block %}
+    {% if category %}
     {{category.name}}
+    {% else %}
+    Unknown Cetegory
+    {% endif %}
 {% endblock %}
 
 {% block body_block %}
@@ -17,7 +21,11 @@
         {% else %}
             <strong>No pages currently in category.</strong>
         {% endif %}
+
+        {% if user.is_authenticated %}
         <a href="{% url 'rango:add_page' category.slug %}">Add a Page</a>
+        {% endif %}
+
     {% else %}
         The specified category does not exist!
     {% endif %}
