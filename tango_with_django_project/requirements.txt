@@ -1,10 +1,10 @@
 asgiref==3.2.3
 certifi==2019.9.11
 chardet==3.0.4
-Django==3.0.1
-django-registration-redux==2.6
+pipDjango==2.2.6
+django-registration-redux==2.2
 idna==2.8
-Pillow==6.1.0
+Pillow==5.4.1
 pytz==2019.2
 requests==2.22.0
 sqlparse==0.3.0
