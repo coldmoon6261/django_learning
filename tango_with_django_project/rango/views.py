@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from .models import Category, Page, UserProfile
 from .forms import CategoryForm, PageForm, UserForm, UserProfileForm
 from django.urls import reverse
@@ -82,7 +82,7 @@ class AddCategoryView(View):
         
         if form.is_valid():
             form.save(commit=True)
-            return index(request)
+            return redirect(reverse('rango:index'))
         else:
             print(form.errors)
         
@@ -112,15 +112,14 @@ class AddPageView(View):
     def post(self, request, category_name_slug):
         form = PageForm(request.POST)
         category = self.get_category_name(category_name_slug)
-
         if form.is_valid():
             if category:
-                page = form.save(commit=True)
+                page = form.save(commit=False)
                 page.category = category
                 page.views = 0
                 page.save()
 
-                return redirect(reverse('rango:show_category',
+                return HttpResponseRedirect(reverse('rango:show_category',
                                         kwargs={'category_name_slug':category_name_slug}))
         else:
             print(form.errors)

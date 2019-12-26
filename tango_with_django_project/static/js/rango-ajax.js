@@ -8,7 +8,7 @@ $(document).ready(function() {
               function(data) {
                   $('#like_count').html(data);
                   $('#like_btn').hide();
-              })
+              });
     });
     
     $('#search-input').keyup(function() {
@@ -19,7 +19,7 @@ $(document).ready(function() {
               {'suggestion': query},
               function(data) {
                   $('#categories-listing').html(data);
-              })
+              });
     });
     
     $('.rango-page-add').click(function() {
@@ -34,7 +34,7 @@ $(document).ready(function() {
               function(data) {
                   $('#page-listing').html(data);
                   clickedButton.hide();
-              })
+              });
         
     });
     
